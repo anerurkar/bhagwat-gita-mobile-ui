@@ -1,29 +1,60 @@
 <div class="shloka-page">
 
-  <h1 class="chapter-title">
-    Chapter {{ chapterNumber }}
-  </h1>
-
-  <div *ngIf="error" class="error">
-    {{ error }}
+  <!-- Header -->
+  <div class="shloka-header">
+    <div class="app-icon">🕉️</div>
+    <h1 class="app-title">Chapter {{ chapterId }}</h1>
+    <p class="app-subtitle">Sacred Shloka</p>
   </div>
 
-  <div class="shloka-list">
-    <div class="shloka-card" *ngFor="let s of shlokas; let i = index">
+  <!-- Loading -->
+  <div *ngIf="loading" class="status-text">
+    Loading shloka…
+  </div>
 
-      <div class="shloka-number">
-        {{ i + 1 }}
-      </div>
+  <!-- Shloka Card -->
+  <div *ngIf="!loading && shloka" class="shloka-card">
 
-      <div class="sanskrit">
-        {{ s.sanskrit }}
-      </div>
-
-      <div class="meaning">
-        {{ s.meaning }}
-      </div>
-
+    <div class="shloka-indicator">
+      Shloka {{ shloka.number }} / {{ totalShlokas }}
     </div>
+
+    <div class="divider"></div>
+
+    <p class="sanskrit-text">
+      {{ shloka.sanskrit }}
+    </p>
+
+    <p class="meaning-text">
+      {{ shloka.meaning }}
+    </p>
+
+    <div class="guidance-box">
+      <div class="guidance-title">Practical Guidance</div>
+      <p class="guidance-text">
+        {{ shloka.guidance }}
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Shloka Navigation -->
+    <div class="shloka-nav">
+      <button (click)="prevShloka()" [disabled]="shlokaNo === 1">
+        ◀ Prev Shloka
+      </button>
+
+      <button (click)="nextShloka()" [disabled]="shlokaNo === totalShlokas">
+        Next Shloka ▶
+      </button>
+    </div>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+      <button (click)="prevChapter()">⟨ Previous Chapter ⟩</button>
+      <button (click)="nextChapter()">⟨ Next Chapter ⟩</button>
+    </div>
+
   </div>
 
 </div>
