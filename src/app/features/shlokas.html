@@ -15,20 +15,24 @@
   <!-- Shloka Card -->
   <div *ngIf="!loading && shloka" class="shloka-card">
 
+    <!-- Shloka Indicator -->
     <div class="shloka-indicator">
       Shloka {{ shloka.number }} / {{ totalShlokas }}
     </div>
 
     <div class="divider"></div>
 
+    <!-- Sanskrit Text -->
     <p class="sanskrit-text">
       {{ shloka.sanskrit }}
     </p>
 
+    <!-- Meaning -->
     <p class="meaning-text">
       {{ shloka.meaning }}
     </p>
 
+    <!-- Practical Guidance -->
     <div class="guidance-box">
       <div class="guidance-title">Practical Guidance</div>
       <p class="guidance-text">
@@ -37,6 +41,13 @@
     </div>
 
     <div class="divider"></div>
+
+    <!-- Audio Button -->
+    <div class="audio-box">
+      <button (click)="playAudio()">
+        🔊 Play Chant & Meaning
+      </button>
+    </div>
 
     <!-- Shloka Navigation -->
     <div class="shloka-nav">
@@ -51,10 +62,13 @@
 
     <!-- Chapter Navigation -->
     <div class="chapter-nav">
-      <button (click)="prevChapter()">⟨ Previous Chapter ⟩</button>
-      <button (click)="nextChapter()">⟨ Next Chapter ⟩</button>
+      <button (click)="prevChapter()" [disabled]="chapterId === 1">
+        ⟨ Previous Chapter ⟩
+      </button>
+      <button (click)="nextChapter()" [disabled]="chapterId === 18">
+        ⟨ Next Chapter ⟩
+      </button>
     </div>
 
   </div>
-
 </div>
