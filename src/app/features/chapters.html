@@ -1,1 +1,54 @@
-<p>chapters works!</p>
+<div class="chapters-page">
+
+  <!-- Header -->
+  <div class="chapters-header">
+    <div class="app-icon">🕉️</div>
+    <h1 class="app-title">Bhagavad Gita</h1>
+    <p class="app-subtitle">Sacred Chapters</p>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="status-text">
+    Loading sacred chapters…
+  </div>
+
+  <!-- Groups -->
+  <div *ngIf="!loading" class="groups-container">
+
+    <div
+      class="group-card"
+      *ngFor="let group of groups"
+    >
+
+      <!-- Group Header -->
+      <div
+        class="group-header"
+        (click)="toggleGroup(group)"
+      >
+        <div class="group-text">
+          <h3 class="group-title">{{ group.title }}</h3>
+          <p class="group-subtitle">{{ group.chapters.length }} Chapters</p>
+        </div>
+
+        <span class="arrow">
+          {{ group.open ? '⌃' : '⌄' }}
+        </span>
+      </div>
+
+      <!-- Chapters -->
+      <div *ngIf="group.open" class="chapters-list">
+        <a
+          class="chapter-item"
+          *ngFor="let c of group.chapters"
+          [routerLink]="['/chapter', c.chapter]"
+        >
+          <span class="chapter-no">Chapter {{ c.chapter }}</span>
+          <span class="chapter-title">{{ c.title }}</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

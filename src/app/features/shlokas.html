@@ -1,1 +1,29 @@
-<p>shlokas works!</p>
+<div class="shloka-page">
+
+  <h1 class="chapter-title">
+    Chapter {{ chapterNumber }}
+  </h1>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div class="shloka-list">
+    <div class="shloka-card" *ngFor="let s of shlokas; let i = index">
+
+      <div class="shloka-number">
+        {{ i + 1 }}
+      </div>
+
+      <div class="sanskrit">
+        {{ s.sanskrit }}
+      </div>
+
+      <div class="meaning">
+        {{ s.meaning }}
+      </div>
+
+    </div>
+  </div>
+
+</div>

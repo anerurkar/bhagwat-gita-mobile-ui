@@ -1,0 +1,95 @@
+/* ===== PAGE BACKGROUND ===== */
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff8ee 0%, #fdfdfb 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.home-content {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* ===== HEADER ===== */
+.home-header {
+  margin-bottom: 36px;
+}
+
+.app-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3a2a1a;
+  margin: 0;
+}
+
+.app-subtitle {
+  font-size: 15px;
+  color: #7a6a55;
+  margin-top: 6px;
+}
+
+/* ===== SANDESH SECTION ===== */
+.sandesh-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a3624;
+  margin-bottom: 18px;
+}
+
+/* ===== SANDESH CARD ===== */
+.sandesh-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px 22px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* Sanskrit Shloka */
+.sandesh-sanskrit {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e1c10;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* Meaning */
+.sandesh-meaning {
+  font-size: 16px;
+  color: #5c4936;
+  line-height: 1.7;
+}
+
+/* ===== PRIMARY ACTION BUTTON ===== */
+.primary-action {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #d4a373, #b88755);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 10px 26px rgba(180, 130, 80, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primary-action:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 18px rgba(180, 130, 80, 0.35);
+}

@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Sacred parchment background */
+body {
+  background: #fdf6ec;
+  color: #3b2a1a;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Remove ugly mobile scroll bounce look */
+html, body {
+  height: 100%;
+}
