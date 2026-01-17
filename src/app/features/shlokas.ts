@@ -90,7 +90,7 @@ export class Shlokas implements OnInit {
       this.shloka = data;
 
       // 🔹 Fetch total shlokas dynamically for this chapter
-      this.http.get<number>(`http://localhost:8080/api/gita/chapter/${this.chapterId}/count`)
+      this.http.get<number>(`https://kshna-svc-100157816972.asia-south1.run.app/api/gita/chapter/${this.chapterId}/count`)
         .subscribe({
           next: count => {
             this.totalShlokas = count;  // dynamically set total
