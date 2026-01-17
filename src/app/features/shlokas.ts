@@ -30,62 +30,89 @@ export class Shlokas implements OnInit {
   // 🔹 KEEP TEMPLATE COMPATIBILITY
   shlokaNo = 1;
 
-  totalShlokas = 18;
+  totalShlokas = 1;
   loading = true;
   shloka?: Shloka;
 
+  
+  
   ngOnInit(): void {
 
-    // 🔹 Chapter change
-    this.route.paramMap.subscribe(params => {
-      this.chapterId = Number(params.get('id')) || 1;
-      this.loadShloka();
-    });
+  let lastChapterId = 0;
 
-    // 🔹 Resume / Go bookmark support
-    this.route.queryParamMap.subscribe(params => {
-      const s = params.get('shloka');
-      if (s) {
-        this.shlokaNo = +s;
+  this.route.paramMap.subscribe(params => {
+    const newChapterId = Number(params.get('id')) || 1;
+
+    // Reset shlokaNo only if chapter changed
+    if (newChapterId !== lastChapterId) {
+      this.shlokaNo = 1;
+      lastChapterId = newChapterId;
+    }
+
+    this.chapterId = newChapterId;
+
+    // Load shloka
+    this.loadShloka();
+  });
+
+  // 🔹 Resume / Go bookmark (query param)
+  this.route.queryParamMap.subscribe(params => {
+    const s = params.get('shloka');
+
+    // Only set shlokaNo from query param if it is valid for current chapter
+    if (s) {
+      const sh = +s;
+      if (sh >= 1 && sh <= this.totalShlokas) {
+        this.shlokaNo = sh;
         this.loadShloka();
       }
-    });
-  }
-  
+    }
+  });
+}
   
 
   // ===============================
   // 🔹 LOAD SHLOKA
   // ===============================
   loadShloka() {
-    this.loading = true;
+  this.loading = true;
 
-    const body = {
-      chapter: this.chapterId,
-      number: this.shlokaNo
-    };
+  const body = {
+    chapter: this.chapterId,
+    number: this.shlokaNo
+  };
 
-    this.http.post<Shloka>(
-      'https://kshna-svc-100157816972.asia-south1.run.app/api/gita/shloka',
-      body
-    ).subscribe({
-      next: data => {
-        this.shloka = data;
+  this.http.post<Shloka>(
+    'https://kshna-svc-100157816972.asia-south1.run.app/api/gita/shloka',
+    body
+  ).subscribe({
+    next: data => {
+      this.shloka = data;
 
-        if ((data as any).totalNoOfShlokas) {
-          this.totalShlokas = (data as any).totalNoOfShlokas;
-        }
+      // 🔹 Fetch total shlokas dynamically for this chapter
+      this.http.get<number>(`http://localhost:8080/api/gita/chapter/${this.chapterId}/count`)
+        .subscribe({
+          next: count => {
+            this.totalShlokas = count;  // dynamically set total
+			console.log(this.totalShlokas);
+            this.loading = false;        // ✅ move inside here
+            this.cdr.markForCheck();
+          },
+          error: err => {
+            console.error('TOTAL SHLOKAS FETCH FAILED', err);
+            this.loading = false;
+            this.cdr.markForCheck();
+          }
+        });
 
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: err => {
-        console.error('SHLOKA LOAD FAILED', err);
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
-  }
+    },
+    error: err => {
+      console.error('SHLOKA LOAD FAILED', err);
+      this.loading = false;
+      this.cdr.markForCheck();
+    }
+  });
+}
 
   // ===============================
   // 🔹 NAVIGATION (URL SYNC)
