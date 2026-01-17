@@ -1,0 +1,22 @@
+<div class="bookmark-controls">
+
+  <button (click)="toggleBookmark()">
+    {{ isBookmarked ? '⭐ Bookmarked' : '☆ Bookmark' }}
+  </button>
+
+  <button *ngIf="allBookmarks.length" (click)="resumeBookmark()">
+    ▶ Resume Last Bookmark
+  </button>
+
+  <button *ngIf="allBookmarks.length" (click)="clearAll()">
+    🗑 Clear All
+  </button>
+
+  <div *ngIf="allBookmarks.length" class="bookmark-list">
+    <div class="bookmark-item" *ngFor="let b of allBookmarks">
+      Chapter {{ b.chapter }} - Shloka {{ b.shloka }}
+      <button (click)="goToBookmark(b)">Go</button>
+    </div>
+  </div>
+
+</div>
