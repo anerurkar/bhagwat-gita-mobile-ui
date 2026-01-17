@@ -1,0 +1,19 @@
+.app-footer {
+  margin-top: auto;
+  padding: 16px 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #7a6a55;
+  background: #fffaf3;
+  border-top: 1px solid #f0e6d8;
+}
+
+.disclaimer {
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.copyright {
+  font-weight: 500;
+  color: #9a8466;
+}

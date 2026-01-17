@@ -1,11 +1,23 @@
 <div class="shloka-page">
 
   <!-- Header -->
-  <div class="shloka-header">
+  <!-- <div class="shloka-header">
     <div class="app-icon">🕉️</div>
     <h1 class="app-title">Chapter {{ chapterId }}</h1>
     <p class="app-subtitle">Sacred Shloka</p>
+  </div> -->
+<!-- Spiritual Header -->
+<div class="spiritual-header">
+  <div class="om-symbol">🕉️</div>
+
+  <div class="chapter-pill">
+    Chapter {{ chapterId }}
   </div>
+
+  <div class="header-title">
+    Sacred Shloka
+  </div>
+</div>
 
   <!-- Loading -->
   <div *ngIf="loading" class="status-text">

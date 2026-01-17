@@ -51,6 +51,8 @@ export class Shlokas implements OnInit {
       }
     });
   }
+  
+  
 
   // ===============================
   // 🔹 LOAD SHLOKA
@@ -108,15 +110,30 @@ export class Shlokas implements OnInit {
     this.goToShloka(this.shlokaNo - 1);
   }
 
-  nextChapter() {
+ /*  nextChapter() {
     this.router.navigate(['/chapter', this.chapterId + 1]);
+  } */
+  nextChapter() {
+  this.router.navigate(['/chapter', this.chapterId + 1], {
+    queryParams: {}   // 🔥 clears shloka
+  });
+}
+prevChapter() {
+  if (this.chapterId > 1) {
+    this.router.navigate(['/chapter', this.chapterId - 1], {
+      queryParams: {} // 🔥 clears shloka
+    });
   }
+}
 
-  prevChapter() {
+
+ /*  prevChapter() {
     if (this.chapterId > 1) {
       this.router.navigate(['/chapter', this.chapterId - 1]);
     }
-  }
+  } */
+  
+  
 
   // ===============================
   // 🔊 AUDIO CHANTING

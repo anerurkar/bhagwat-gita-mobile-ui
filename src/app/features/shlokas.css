@@ -126,3 +126,49 @@ button:disabled {
   cursor: pointer;
 }
 
+/* 🌸 Spiritual Header Upgrade */
+.spiritual-header {
+  width: 100%;
+  text-align: center;
+  padding: 26px 16px 20px;
+  margin-bottom: 18px;
+  background: radial-gradient(
+    circle at top,
+    #fff1d6 0%,
+    #fff8ed 45%,
+    #ffffff 100%
+  );
+}
+
+.om-symbol {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #b57f2a;
+}
+
+.chapter-pill {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f3d6a2, #f8ead0);
+  color: #7a4a00;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+}
+
+.header-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8a6a2f;
+  letter-spacing: 0.6px;
+}
+.sanskrit-text {
+  font-size: 22px;
+  line-height: 1.9;
+  font-weight: 600;
+  color: #3a260f;
+  text-align: center;
+  letter-spacing: 0.4px;
+}
